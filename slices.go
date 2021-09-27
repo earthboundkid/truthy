@@ -18,15 +18,6 @@ func Any[T any](vs ...T) bool {
 	return false
 }
 
-func First[T any](vs ...T) (t T) {
-	for _, v := range vs {
-		if Value(v) {
-			return v
-		}
-	}
-	return t
-}
-
 func Filter[T any](vs *[]T) {
 	filtered := (*vs)[:0]
 	for _, v := range *vs {
