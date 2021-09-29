@@ -1,18 +1,20 @@
-package truthy
+package truthy_test
 
 import (
 	"fmt"
 	"testing"
 	"time"
+
+	"github.com/carlmjohnson/truthy"
 )
 
 type errT struct{}
 
 func (_ *errT) Error() string { return "" }
 
-func test[T any](t *testing.T, v T, truthy bool) {
-	t.Run(fmt.Sprintf("%T-%v-%v", v, v, truthy), func(t *testing.T) {
-		if got := Value(v); got != truthy {
+func test[T any](t *testing.T, v T, ok bool) {
+	t.Run(fmt.Sprintf("%T-%v-%v", v, v, ok), func(t *testing.T) {
+		if got := truthy.Value(v); got != ok {
 			t.Fatal()
 		}
 	})

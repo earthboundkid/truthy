@@ -1,7 +1,9 @@
-package truthy
+package truthy_test
 
 import (
 	"testing"
+
+	"github.com/carlmjohnson/truthy"
 )
 
 func TestOps(t *testing.T) {
@@ -9,37 +11,37 @@ func TestOps(t *testing.T) {
 		F   func(int, int) bool
 		ops [4][3]int
 	}{
-		"and": {And[int, int], [4][3]int{
+		"and": {truthy.And[int, int], [4][3]int{
 			{0, 0, 0},
 			{0, 1, 0},
 			{1, 0, 0},
 			{1, 1, 1},
 		}},
-		"or": {Or[int, int], [4][3]int{
+		"or": {truthy.Or[int, int], [4][3]int{
 			{0, 0, 0},
 			{0, 1, 1},
 			{1, 0, 1},
 			{1, 1, 1},
 		}},
-		"xor": {Xor[int, int], [4][3]int{
+		"xor": {truthy.Xor[int, int], [4][3]int{
 			{0, 0, 0},
 			{0, 1, 1},
 			{1, 0, 1},
 			{1, 1, 0},
 		}},
-		"nor": {Nor[int, int], [4][3]int{
+		"nor": {truthy.Nor[int, int], [4][3]int{
 			{0, 0, 1},
 			{0, 1, 0},
 			{1, 0, 0},
 			{1, 1, 0},
 		}},
-		"nand": {Nand[int, int], [4][3]int{
+		"nand": {truthy.Nand[int, int], [4][3]int{
 			{0, 0, 1},
 			{0, 1, 1},
 			{1, 0, 1},
 			{1, 1, 0},
 		}},
-		"xnor": {Xnor[int, int], [4][3]int{
+		"xnor": {truthy.Xnor[int, int], [4][3]int{
 			{0, 0, 1},
 			{0, 1, 0},
 			{1, 0, 0},
