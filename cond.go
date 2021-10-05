@@ -1,12 +1,12 @@
 package truthy
 
-// Cond returns the _if value if cond is truthy,
-// otherwise it returns the _else value.
+// Cond returns ifVal if cond is truthy,
+// otherwise it returns elseVal.
 //
 // Note that Cond cannot do lazy evaluation of its arguments.
-func Cond[T, U any](cond T, _if, _else U) U {
+func Cond[T, U any](cond T, ifVal, elseVal U) U {
 	if Value(cond) {
-		return _if
+		return ifVal
 	}
-	return _else
+	return elseVal
 }
