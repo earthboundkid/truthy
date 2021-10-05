@@ -14,11 +14,7 @@ type MyStruct struct {
 }
 
 func NewMyStruct(port int, host string, timeout time.Duration) *MyStruct {
-	s := MyStruct{
-		Port:    port,
-		Host:    host,
-		Timeout: timeout,
-	}
+	s := MyStruct{port, host, timeout}
 	truthy.SetDefault(&s.Port, 80)
 	truthy.SetDefault(&s.Host, "localhost")
 	truthy.SetDefault(&s.Timeout, 10*time.Second)
