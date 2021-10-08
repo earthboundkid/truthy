@@ -52,7 +52,7 @@ s := truthy.Cond(x,
 		// do some calculation
 		return "bar"
 	})()
-// s == "bar"
+// s == "foo"
 
 // How about an equivalent of ?? in C#, JavaScript, PHP, etc.:
 var s string
