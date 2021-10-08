@@ -7,61 +7,62 @@ Truthy is a package which uses generics (Go 1.18+) to create useful boolean test
 ## Examples
 
 ```
-	var err error
-	truthy.Value(err) // false
+var err error
+truthy.Value(err) // false
 
-	err = errors.New("hi")
-	truthy.Value(err) // true
+err = errors.New("hi")
+truthy.Value(err) // true
 
-	if truthy.Value(err) {
-		panic(err)
-	}
+if truthy.Value(err) {
+	panic(err)
+}
 
-	var n int
-	truthy.Value(n) // false
+var n int
+truthy.Value(n) // false
 
-	n = 1
-	truthy.Value(n) // true
+n = 1
+truthy.Value(n) // true
 
-	var p *int
-	truthy.Value(p) // false
+var p *int
+truthy.Value(p) // false
 
-	p = new(int)
-	// truthy does not check value underlying pointer!
-	truthy.Value(p) // true
+p = new(int)
+// truthy does not check value underlying pointer!
+truthy.Value(p) // true
 
-	if truthy.Or("1", 0) {
-		fmt.Println("yay") // prints yay
-	}
+if truthy.Or("1", 0) {
+	fmt.Println("yay") // prints yay
+}
 
-	if truthy.And(300, "") {
-		fmt.Println("boo") // not executed
-	}
+if truthy.And(300, "") {
+	fmt.Println("boo") // not executed
+}
 
-	// Ever wish Go has ? : ternary operators?
-	x := truthy.Cond("", 1, 10) // x == 10
-	// truthy.Cond cannot lazily evaluate its arguments,
-	// but you can use a closure to fake it.
-	s := truthy.Cond(x,
-		func() string {
-			// do some calculation
-			return "foo"
-		},
-		func() string {
-			// do some calculation
-			return "bar"
-		})()
-	// s == "bar"
+// Ever wish Go has ? : ternary operators?
+x := truthy.Cond("", 1, 10) // x == 10
 
-	// How about an equivalent of ?? in C#, JavaScript, PHP, etc.:
-	var s string
-	truthy.First(s, "default") // "default"
-	s = "something"
-	truthy.First(s, "default") // "something"
+// truthy.Cond cannot lazily evaluate its arguments,
+// but you can use a closure to fake it.
+s := truthy.Cond(x,
+	func() string {
+		// do some calculation
+		return "foo"
+	},
+	func() string {
+		// do some calculation
+		return "bar"
+	})()
+// s == "bar"
 
-	// Easily set defaults
-	n := getUserInput()
-	truthy.SetDefault(&n, 42)
+// How about an equivalent of ?? in C#, JavaScript, PHP, etc.:
+var s string
+truthy.First(s, "default") // "default"
+s = "something"
+truthy.First(s, "default") // "something"
+
+// Easily set defaults
+n := getUserInput()
+truthy.SetDefault(&n, 42)
 ```
 
 ## Discussion
