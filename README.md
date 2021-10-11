@@ -82,7 +82,7 @@ if truthy.And(300, "") {
 
 ## Installation
 
-As of October 2018, Go 1.18 is not released, but you can install Go tip with
+As of October 2021, Go 1.18 is not released, but you can install Go tip with
 
 ```
 $ go install golang.org/dl/gotip@latest
