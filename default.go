@@ -6,7 +6,7 @@ func First[T any](vs ...T) (t T) {
 			return v
 		}
 	}
-	return t
+	return
 }
 
 func SetDefault[T any](p *T, defaults ...T) {
