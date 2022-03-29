@@ -19,7 +19,11 @@ func Value[T any](v T) bool {
 	case interface{ IsZero() bool }:
 		return !m.IsZero()
 	}
-	switch rv := reflect.ValueOf(&v).Elem(); rv.Kind() {
+	return reflectValue(&v)
+}
+
+func reflectValue(vp any) bool {
+	switch rv := reflect.ValueOf(vp).Elem(); rv.Kind() {
 	case reflect.Map, reflect.Slice:
 		return rv.Len() != 0
 	default:
