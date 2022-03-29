@@ -1,4 +1,4 @@
-# Truthy
+# Truthy [![Go Reference](https://pkg.go.dev/badge/github.com/carlmjohnson/truthy.svg)](https://pkg.go.dev/github.com/carlmjohnson/truthy)
 
 ![Truthiness](https://user-images.githubusercontent.com/222245/136619462-f2bc5858-067f-4277-a813-b95c64b3cdac.png)
 
@@ -58,7 +58,7 @@ s := truthy.Cond([]string{""},
 // s == "foo"
 
 
-// How about an equivalent of the nullish coalescing operator ?? 
+// How about an equivalent of the nullish coalescing operator ??
 // as seen in C#, JavaScript, PHP, etc.:
 var s string
 truthy.First(s, "default") // "default"
@@ -110,5 +110,5 @@ I tried to write a non-generic version of this package first, but you can’t re
 
 Then there’s `truthy.First()`. To be honest, `truthy.First()` is the only part of the package that I consider actually useful, and even that, I mostly expect it to be used for picking a string or default. Anyhow, it requires generics to avoid the cast back from interface type to the concrete type.
 
-### Should I use this package? 
+### Should I use this package?
 Probably not. It's a little bit of a joke package, but the `truthy.First()` and `truthy.SetDefault()` functionality seem useful, especially for strings. Time will tell what best practices around the use of generics in Go turn out to be.
