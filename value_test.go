@@ -1,6 +1,7 @@
 package truthy_test
 
 import (
+	"errors"
 	"fmt"
 	"testing"
 	"time"
@@ -63,4 +64,49 @@ func TestValue(t *testing.T) {
 	test(t, cron, false)
 	test(t, cron.In(time.Local), false)
 	test(t, time.Now(), true)
+}
+
+func BenchmarkValue_error(b *testing.B) {
+	fillVal := errors.New("something")
+	fill := false
+	for i := 0; i < b.N; i++ {
+		var value error
+		if fill {
+			value = fillVal
+		}
+		if truthy.Value(value) != fill {
+			b.FailNow()
+		}
+		fill = !fill
+	}
+}
+
+func BenchmarkValue_string(b *testing.B) {
+	fillVal := "something"
+	fill := false
+	for i := 0; i < b.N; i++ {
+		var value string
+		if fill {
+			value = fillVal
+		}
+		if truthy.Value(value) != fill {
+			b.FailNow()
+		}
+		fill = !fill
+	}
+}
+
+func BenchmarkValue_int(b *testing.B) {
+	fillVal := 1
+	fill := false
+	for i := 0; i < b.N; i++ {
+		var value int
+		if fill {
+			value = fillVal
+		}
+		if truthy.Value(value) != fill {
+			b.FailNow()
+		}
+		fill = !fill
+	}
 }
