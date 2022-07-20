@@ -12,8 +12,7 @@ import (
 //
 // Note that the usual Go type system caveats apply around a nil pointer value not being a nil interface value.
 func Value[T any](v T) bool {
-	var i interface{} = v
-	switch m := i.(type) {
+	switch m := any(v).(type) {
 	case interface{ Bool() bool }:
 		return m.Bool()
 	case interface{ IsZero() bool }:
