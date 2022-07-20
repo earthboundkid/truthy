@@ -15,3 +15,14 @@ func ExampleCoalesce() {
 	// 1
 	// 0
 }
+
+func ExampleDeref() {
+	var np *int
+	fmt.Println(truthy.Deref(np))
+	one := 1
+	np = &one
+	fmt.Println(truthy.Deref(np))
+	// Output:
+	// 0
+	// 1
+}

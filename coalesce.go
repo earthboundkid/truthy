@@ -8,3 +8,8 @@ func Coalesce[T any](p *T, v T) T {
 
 	return v
 }
+
+// Deref returns *p if p is not nil, otherwise the zero value of T.
+func Deref[T any](p *T) T {
+	return Coalesce(p, *new(T))
+}
