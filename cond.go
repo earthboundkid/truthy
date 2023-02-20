@@ -1,11 +1,9 @@
 package truthy
 
-// Cond returns ifVal if cond is truthy,
+// Cond returns ifVal if cond is true,
 // otherwise it returns elseVal.
-//
-// Note that Cond cannot do lazy evaluation of its arguments.
-func Cond[T, U any](cond T, ifVal, elseVal U) U {
-	if Value(cond) {
+func Cond[T any](cond bool, ifVal, elseVal T) T {
+	if cond {
 		return ifVal
 	}
 	return elseVal
