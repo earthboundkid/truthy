@@ -2,12 +2,15 @@
 
 ![Truthiness](https://user-images.githubusercontent.com/222245/136619462-f2bc5858-067f-4277-a813-b95c64b3cdac.png)
 
-Truthy is a package which uses generics (Go 1.18+) to create useful boolean tests and helper functions.
+Truthy is a package which uses generics to create useful boolean tests of truthiness and helper functions.
 
 ## Examples
 
 ```
-// truthy.Value returns the truthiness of any argument.
+// truthy.Value returns whether a comparable value
+// is equal to the zero value for its type.
+//
+// truthy.ValueAny returns the truthiness of any argument.
 // If the value's type has a Bool() bool method, the method is called and returned.
 // If the type has an IsZero() bool method, the opposite value is returned.
 // Slices and maps are truthy if they have a length greater than zero.
@@ -19,11 +22,11 @@ truthy.Value(1) // true
 truthy.Value("") // false
 truthy.Value(" ") // true
 
-truthy.Value([]byte(``)) // false
-truthy.Value([]byte(` `)) // true
+truthy.ValueSlice([]byte(``)) // false
+truthy.ValueSlice([]byte(` `)) // true
 
-truthy.Value([]int{}) // false
-truthy.Value([]int{1, 2, 3}) // true
+truthy.ValueSlice([]int{}) // false
+truthy.ValueSlice([]int{1, 2, 3}) // true
 
 var err error
 truthy.Value(err) // false
@@ -42,11 +45,11 @@ truthy.Value(p) // true
 
 // Ever wish Go had ? : ternary operators?
 // Now it has a ternary function.
-x := truthy.Cond("", 1, 10) // x == 10
+x := truthy.Cond(truthy.Value(""), 1, 10) // x == 10
 
 // truthy.Cond cannot lazily evaluate its arguments,
 // but you can use a closure to fake it.
-s := truthy.Cond([]string{""},
+s := truthy.Cond(truthy.ValueSlice([]string{""}),
 	func() string {
 		// do some calculation
 		return "foo"
@@ -69,33 +72,6 @@ truthy.First(0, 0*1, 1-1, 0x10-10) // 6
 // Easily set defaults
 n := getUserInput()
 truthy.SetDefault(&n, 42)
-
-// Collection testing and filtering
-truthy.Any(0, 1, 2) // true
-truthy.All(0, 1, 2) // false
-
-ss := []string{"", "a", "b", ""}
-truthy.Filter(&ss) // ss == []string{"a", "b"}
-
-// Logical operators
-if truthy.Or("1", 0) {
-	fmt.Println("yay") // prints yay
-}
-
-if truthy.And(300, "") {
-	fmt.Println("boo") // not executed
-}
-```
-
-## Installation
-
-As of October 2021, Go 1.18 is not released, but you can install Go tip with
-
-```
-$ go install golang.org/dl/gotip@latest
-$ gotip download
-$ gotip init me/myproject
-$ gotip get github.com/carlmjohnson/truthy
 ```
 
 ## FAQs

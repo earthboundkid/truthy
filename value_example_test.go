@@ -34,21 +34,29 @@ func ExampleValue() {
 	s = " "
 	fmt.Println(truthy.Value(s))
 
+	var b []byte
+	fmt.Println(truthy.ValueSlice(b))
+
+	b = []byte(" ")
+	fmt.Println(truthy.ValueSlice(b))
+
 	m := map[string]string{}
-	fmt.Println(truthy.Value(m))
+	fmt.Println(truthy.ValueMap(m))
 
 	m["a"] = "b"
-	fmt.Println(truthy.Value(m))
+	fmt.Println(truthy.ValueMap(m))
 
 	var t time.Time
 	t = t.Local()
 	// t.IsZero() is still true although t is not the empty value
-	fmt.Println(truthy.Value(t))
+	fmt.Println(truthy.ValueAny(t))
 
 	t = t.Add(1 * time.Second)
-	fmt.Println(truthy.Value(t))
+	fmt.Println(truthy.ValueAny(t))
 
 	// Output:
+	// false
+	// true
 	// false
 	// true
 	// false
