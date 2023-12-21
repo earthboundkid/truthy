@@ -70,3 +70,18 @@ func ExampleValue() {
 	// false
 	// true
 }
+
+func ExampleValueDeref() {
+	var np *int
+	fmt.Println(truthy.ValueDeref(np))
+	zero := 0
+	np = &zero
+	fmt.Println(truthy.ValueDeref(np))
+	one := 1
+	np = &one
+	fmt.Println(truthy.ValueDeref(np))
+	// Output:
+	// false
+	// false
+	// true
+}

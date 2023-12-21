@@ -40,8 +40,10 @@ var p *int
 truthy.Value(p) // false
 
 p = new(int)
-// truthy does not check value underlying pointer!
+// Value does not check the underlying truthy value for a pointer!
 truthy.Value(p) // true
+// but ValueDeref does!
+truthy.ValueDeref(p) // false
 
 // Ever wish Go had ? : ternary operators?
 // Now it has a ternary function.

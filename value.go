@@ -51,3 +51,10 @@ func ValueMap[K comparable, V any, M ~map[K]V](v M) bool {
 func Value[T comparable](v T) bool {
 	return v != *new(T)
 }
+
+// ValueDeref returns the truthy value of comparable types.
+// Values are truthy if they are not equal to the
+// zero value for the dereferenced type.
+func ValueDeref[T comparable](p *T) bool {
+	return Value(Deref(p))
+}
