@@ -20,7 +20,7 @@ func test[T any](t *testing.T, v T, ok bool) {
 	})
 }
 
-func TestValueForAny(t *testing.T) {
+func TestTruthyAny(t *testing.T) {
 	var err error
 	test(t, err, false)
 	err = (*errT)(nil)

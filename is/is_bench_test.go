@@ -7,7 +7,7 @@ import (
 	"github.com/carlmjohnson/truthy/is"
 )
 
-func BenchmarkValueAny_error(b *testing.B) {
+func BenchmarkTruthyAny_error(b *testing.B) {
 	fillVal := errors.New("something")
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -22,7 +22,7 @@ func BenchmarkValueAny_error(b *testing.B) {
 	}
 }
 
-func BenchmarkValue_error(b *testing.B) {
+func BenchmarkTruthy_error(b *testing.B) {
 	fillVal := errors.New("something")
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -52,7 +52,7 @@ func Benchmark_error(b *testing.B) {
 	}
 }
 
-func BenchmarkValueAny_string(b *testing.B) {
+func BenchmarkTruthyAny_string(b *testing.B) {
 	fillVal := "something"
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -67,7 +67,7 @@ func BenchmarkValueAny_string(b *testing.B) {
 	}
 }
 
-func BenchmarkValue_string(b *testing.B) {
+func BenchmarkTruthy_string(b *testing.B) {
 	fillVal := "something"
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -97,7 +97,7 @@ func Benchmark_string(b *testing.B) {
 	}
 }
 
-func BenchmarkValueAny_int(b *testing.B) {
+func BenchmarkTruthyAny_int(b *testing.B) {
 	fillVal := 1
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -112,7 +112,7 @@ func BenchmarkValueAny_int(b *testing.B) {
 	}
 }
 
-func BenchmarkValue_int(b *testing.B) {
+func BenchmarkTruthy_int(b *testing.B) {
 	fillVal := 1
 	fill := false
 	for i := 0; i < b.N; i++ {

@@ -20,7 +20,7 @@ func Truthy[T comparable](v T) bool {
 // Note that the usual Go type system caveats apply around a nil pointer value not being a nil interface value.
 //
 // In benchmark testing,
-// TruthyAny is approximately 25 times slower than Value,
+// TruthyAny is approximately 25 times slower than Truthy,
 // and 50 times slower than native Go comparisons.
 func TruthyAny[T any](v T) bool {
 	switch m := any(v).(type) {
@@ -38,8 +38,8 @@ func TruthyMap[K comparable, V any, M ~map[K]V](v M) bool {
 	return len(v) > 0
 }
 
-// Get returns the truthy value of dereferenced pointers of comparable types.
-// Values are truthy if they are not equal to the zero value for the type.
+// TruthyPointer returns the truthy value of dereferenced pointers of comparable types.
+// Values are truthy if they are not equal to the zero value for the dereferenced type.
 // Note that it will evaluate to true for double pointers.
 func TruthyPointer[T comparable](v *T) bool {
 	if v == nil {

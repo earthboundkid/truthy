@@ -9,7 +9,7 @@ import (
 
 func ExampleEvaluate_lazy() {
 	i := 1
-	// Cond cannot lazily evaluate its arguments,
+	// Evaluate cannot lazily evaluate its arguments,
 	// but you can use a closure to fake it.
 	s := ternary.Evaluate(
 		is.Truthy(i),

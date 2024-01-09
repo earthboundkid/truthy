@@ -21,7 +21,7 @@ func NewMyStruct(port int, host string, timeout time.Duration) *MyStruct {
 	return &s
 }
 
-func ExampleSetDefault() {
+func ExampleSetFirst() {
 	fmt.Println(NewMyStruct(0, "", 0))
 	fmt.Println(NewMyStruct(443, "example.com", 1*time.Minute))
 	// Output:
@@ -37,7 +37,7 @@ func MakeMyStruct(port int, host string, timeout time.Duration) *MyStruct {
 	}
 }
 
-func ExampleFirst() {
+func ExampleGetFirst() {
 	fmt.Println(MakeMyStruct(0, "", 0))
 	fmt.Println(MakeMyStruct(443, "example.com", 1*time.Minute))
 	// Output:
