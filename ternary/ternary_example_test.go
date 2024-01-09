@@ -1,17 +1,17 @@
-package condition_test
+package ternary_test
 
 import (
 	"fmt"
 
-	"github.com/carlmjohnson/truthy/condition"
 	"github.com/carlmjohnson/truthy/is"
+	"github.com/carlmjohnson/truthy/ternary"
 )
 
 func ExampleEvaluate_lazy() {
 	i := 1
 	// Cond cannot lazily evaluate its arguments,
 	// but you can use a closure to fake it.
-	s := condition.Evaluate(
+	s := ternary.Evaluate(
 		is.Truthy(i),
 		func() string {
 			// do some calculation

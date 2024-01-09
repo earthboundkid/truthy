@@ -6,26 +6,6 @@
 
 ## Package Examples
 
-### `truthy/condition`
-```go
-// Ever wish Go had ? : ternary operators?
-// Now it has a ternary function.
-x := condition.Evaluate(is.Truthy(""), 1, 10) // x == 10
-
-// condition.Evaluate cannot lazily evaluate its arguments,
-// but you can use a closure to fake it.
-s := condition.Evaluate(is.TruthySlice([]string{""}),
-	func() string {
-		// do some calculation
-		return "foo"
-	},
-	func() string {
-		// do some calculation
-		return "bar"
-	})()
-// s == "foo"
-```
-
 ### `truthy/defaults`
 ```go
 // How about an equivalent of the nullish coalescing operator ??
@@ -100,4 +80,24 @@ newptr := pointers.New("meaning of life") // makes a pointer to a string, wow!
 
 // pointers.First returns the first pointer that isn't nil.
 strptr = pointers.First(strptr, newptr) // returns newptr
+```
+
+### `truthy/ternary`
+```go
+// Ever wish Go had ? : ternary operators?
+// Now it has a ternary function.
+x := ternary.Evaluate(is.Truthy(""), 1, 10) // x == 10
+
+// ternary.Evaluate cannot lazily evaluate its arguments,
+// but you can use a closure to fake it.
+s := ternary.Evaluate(is.TruthySlice([]string{""}),
+	func() string {
+		// do some calculation
+		return "foo"
+	},
+	func() string {
+		// do some calculation
+		return "bar"
+	})()
+// s == "foo"
 ```

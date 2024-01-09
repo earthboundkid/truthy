@@ -1,4 +1,4 @@
-package condition
+package ternary
 
 // Evaluate returns ifVal if cond is true,
 // otherwise it returns elseVal.
