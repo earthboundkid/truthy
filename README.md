@@ -2,7 +2,7 @@
 
 ![Truthiness](https://user-images.githubusercontent.com/222245/136619462-f2bc5858-067f-4277-a813-b95c64b3cdac.png)
 
-truthy is a set of packages that use generics to create useful boolean tests of truthiness and also contain some nice helper functions
+`truthy` leverages generics to create a useful collection of boolean tests of truthiness and helper functions
 
 ## Package Examples
 
