@@ -1,10 +1,10 @@
-package truthy_test
+package is_test
 
 import (
 	"errors"
 	"testing"
 
-	"github.com/carlmjohnson/truthy"
+	"github.com/carlmjohnson/truthy/is"
 )
 
 func BenchmarkValueAny_error(b *testing.B) {
@@ -15,7 +15,7 @@ func BenchmarkValueAny_error(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if truthy.ValueAny(value) != fill {
+		if is.TruthyAny(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -30,7 +30,7 @@ func BenchmarkValue_error(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if truthy.Value(value) != fill {
+		if is.Truthy(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -60,7 +60,7 @@ func BenchmarkValueAny_string(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if truthy.ValueAny(value) != fill {
+		if is.TruthyAny(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -75,7 +75,7 @@ func BenchmarkValue_string(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if truthy.Value(value) != fill {
+		if is.Truthy(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -105,7 +105,7 @@ func BenchmarkValueAny_int(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if truthy.ValueAny(value) != fill {
+		if is.TruthyAny(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -120,7 +120,7 @@ func BenchmarkValue_int(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if truthy.Value(value) != fill {
+		if is.Truthy(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill

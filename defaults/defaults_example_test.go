@@ -1,10 +1,10 @@
-package truthy_test
+package defaults_test
 
 import (
 	"fmt"
 	"time"
 
-	"github.com/carlmjohnson/truthy"
+	"github.com/carlmjohnson/truthy/defaults"
 )
 
 type MyStruct struct {
@@ -15,9 +15,9 @@ type MyStruct struct {
 
 func NewMyStruct(port int, host string, timeout time.Duration) *MyStruct {
 	s := MyStruct{port, host, timeout}
-	truthy.SetDefault(&s.Port, 80)
-	truthy.SetDefault(&s.Host, "localhost")
-	truthy.SetDefault(&s.Timeout, 10*time.Second)
+	defaults.SetFirst(&s.Port, 80)
+	defaults.SetFirst(&s.Host, "localhost")
+	defaults.SetFirst(&s.Timeout, 10*time.Second)
 	return &s
 }
 
@@ -31,9 +31,9 @@ func ExampleSetDefault() {
 
 func MakeMyStruct(port int, host string, timeout time.Duration) *MyStruct {
 	return &MyStruct{
-		Port:    truthy.First(port, 80),
-		Host:    truthy.First(host, "localhost"),
-		Timeout: truthy.First(timeout, 10*time.Second),
+		Port:    defaults.GetFirst(port, 80),
+		Host:    defaults.GetFirst(host, "localhost"),
+		Timeout: defaults.GetFirst(timeout, 10*time.Second),
 	}
 }
 
