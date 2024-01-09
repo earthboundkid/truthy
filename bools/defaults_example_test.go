@@ -1,10 +1,10 @@
-package defaults_test
+package bools_test
 
 import (
 	"fmt"
 	"time"
 
-	"github.com/carlmjohnson/truthy/defaults"
+	"github.com/carlmjohnson/truthy/bools"
 )
 
 type MyStruct struct {
@@ -15,9 +15,9 @@ type MyStruct struct {
 
 func NewMyStruct(port int, host string, timeout time.Duration) *MyStruct {
 	s := MyStruct{port, host, timeout}
-	defaults.SetFirst(&s.Port, 80)
-	defaults.SetFirst(&s.Host, "localhost")
-	defaults.SetFirst(&s.Timeout, 10*time.Second)
+	bools.SetFirst(&s.Port, 80)
+	bools.SetFirst(&s.Host, "localhost")
+	bools.SetFirst(&s.Timeout, 10*time.Second)
 	return &s
 }
 
@@ -31,9 +31,9 @@ func ExampleSetFirst() {
 
 func MakeMyStruct(port int, host string, timeout time.Duration) *MyStruct {
 	return &MyStruct{
-		Port:    defaults.GetFirst(port, 80),
-		Host:    defaults.GetFirst(host, "localhost"),
-		Timeout: defaults.GetFirst(timeout, 10*time.Second),
+		Port:    bools.GetFirst(port, 80),
+		Host:    bools.GetFirst(host, "localhost"),
+		Timeout: bools.GetFirst(timeout, 10*time.Second),
 	}
 }
 

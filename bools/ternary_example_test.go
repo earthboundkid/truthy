@@ -1,18 +1,17 @@
-package ternary_test
+package bools_test
 
 import (
 	"fmt"
 
-	"github.com/carlmjohnson/truthy/is"
-	"github.com/carlmjohnson/truthy/ternary"
+	"github.com/carlmjohnson/truthy/bools"
 )
 
-func ExampleEvaluate_lazy() {
+func ExampleTernary_lazy() {
 	i := 1
-	// Evaluate cannot lazily evaluate its arguments,
+	// Ternary cannot lazily evaluate its arguments,
 	// but you can use a closure to fake it.
-	s := ternary.Evaluate(
-		is.Truthy(i),
+	s := bools.Ternary(
+		bools.Comparable(i),
 		func() string {
 			// do some calculation
 			return "true"

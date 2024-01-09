@@ -1,11 +1,9 @@
-package defaults
-
-import "github.com/carlmjohnson/truthy/is"
+package bools
 
 // GetFirst returns the first value in vs which is non-zero.
 func GetFirst[T comparable](vs ...T) (t T) {
 	for _, v := range vs {
-		if is.Truthy(v) {
+		if Comparable(v) {
 			return v
 		}
 	}
@@ -15,7 +13,7 @@ func GetFirst[T comparable](vs ...T) (t T) {
 // GetFirstAny returns the first value in vs which is truthy.
 func GetFirstAny[T any](vs ...T) (t T) {
 	for _, v := range vs {
-		if is.TruthyAny(v) {
+		if Any(v) {
 			return v
 		}
 	}
@@ -25,7 +23,7 @@ func GetFirstAny[T any](vs ...T) (t T) {
 // SetFirst sets p to the first non-zero value in defaults
 // if it is not already non-zero.
 func SetFirst[T comparable](p *T, defaults ...T) {
-	if !is.TruthyPointer(p) {
+	if !Pointer(p) {
 		*p = GetFirst(defaults...)
 	}
 }
@@ -33,7 +31,7 @@ func SetFirst[T comparable](p *T, defaults ...T) {
 // SetFirstAny sets p to the first truthy value in defaults
 // if it is not already truthy.
 func SetFirstAny[T any](p *T, defaults ...T) {
-	if !is.TruthyAny(*p) {
+	if !Any(*p) {
 		*p = GetFirstAny(defaults...)
 	}
 }

@@ -1,13 +1,13 @@
-package is_test
+package bools_test
 
 import (
 	"errors"
 	"testing"
 
-	"github.com/carlmjohnson/truthy/is"
+	"github.com/carlmjohnson/truthy/bools"
 )
 
-func BenchmarkTruthyAny_error(b *testing.B) {
+func BenchmarkAny_error(b *testing.B) {
 	fillVal := errors.New("something")
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -15,14 +15,14 @@ func BenchmarkTruthyAny_error(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if is.TruthyAny(value) != fill {
+		if bools.Any(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
 	}
 }
 
-func BenchmarkTruthy_error(b *testing.B) {
+func BenchmarkComparable_error(b *testing.B) {
 	fillVal := errors.New("something")
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -30,7 +30,7 @@ func BenchmarkTruthy_error(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if is.Truthy(value) != fill {
+		if bools.Comparable(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -52,7 +52,7 @@ func Benchmark_error(b *testing.B) {
 	}
 }
 
-func BenchmarkTruthyAny_string(b *testing.B) {
+func BenchmarkAny_string(b *testing.B) {
 	fillVal := "something"
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -60,14 +60,14 @@ func BenchmarkTruthyAny_string(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if is.TruthyAny(value) != fill {
+		if bools.Any(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
 	}
 }
 
-func BenchmarkTruthy_string(b *testing.B) {
+func BenchmarkComparable_string(b *testing.B) {
 	fillVal := "something"
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -75,7 +75,7 @@ func BenchmarkTruthy_string(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if is.Truthy(value) != fill {
+		if bools.Comparable(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
@@ -97,7 +97,7 @@ func Benchmark_string(b *testing.B) {
 	}
 }
 
-func BenchmarkTruthyAny_int(b *testing.B) {
+func BenchmarkAny_int(b *testing.B) {
 	fillVal := 1
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -105,14 +105,14 @@ func BenchmarkTruthyAny_int(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if is.TruthyAny(value) != fill {
+		if bools.Any(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
 	}
 }
 
-func BenchmarkTruthy_int(b *testing.B) {
+func BenchmarkComparable_int(b *testing.B) {
 	fillVal := 1
 	fill := false
 	for i := 0; i < b.N; i++ {
@@ -120,7 +120,7 @@ func BenchmarkTruthy_int(b *testing.B) {
 		if fill {
 			value = fillVal
 		}
-		if is.Truthy(value) != fill {
+		if bools.Comparable(value) != fill {
 			b.FailNow()
 		}
 		fill = !fill
